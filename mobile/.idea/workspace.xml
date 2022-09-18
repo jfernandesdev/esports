@@ -3,8 +3,37 @@
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="NONE" />
   </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="4f730bec-13ee-406e-9dfe-e139c2230724" name="Default Changelist" comment="" />
+    <list default="true" id="4f730bec-13ee-406e-9dfe-e139c2230724" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.expo-shared/assets.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/GameCard/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/GameCard/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Loading/styles.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Loading/styles.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/screens/Game/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/Game/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/screens/Game/styles.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/Game/styles.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/screens/Home/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/Home/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/screens/Home/styles.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/Home/styles.ts" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,6 +49,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
@@ -37,5 +67,23 @@
       <updated>1663345852249</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="100" y="100" width="1166" height="528" key="AVDManager" timestamp="1663520652235">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="100" y="100" width="1166" height="528" key="AVDManager/0.0.1600.860/1600.0.1366.728@0.0.1600.860" timestamp="1663520652235" />
   </component>
 </project>

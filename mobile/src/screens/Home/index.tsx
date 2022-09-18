@@ -14,11 +14,11 @@ import { api } from '../../lib/api';
 import { styles } from './styles';
 
 export function Home(){
-  const [games, setGames] = useState<GameCardProps[]>([])
-  const navigation = useNavigation()
+  const [games, setGames] = useState<GameCardProps[]>([]);
+  const navigation = useNavigation();
 
   function handleOpenGame({ id, title, bannerUrl }: GameCardProps) {
-    navigation.navigate('game', { id, title, bannerUrl })
+    navigation.navigate('game', { id, title, bannerUrl });
   }
 
   useEffect(() => {

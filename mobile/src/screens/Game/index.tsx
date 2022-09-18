@@ -1,4 +1,5 @@
-import { View, TouchableOpacity, Image } from 'react-native';
+import { useState, useEffect } from 'react';
+import { View, Text, TouchableOpacity, Image, FlatList } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRoute, useNavigation } from '@react-navigation/native';
 import { Entypo } from '@expo/vector-icons';
@@ -7,13 +8,17 @@ import { GameParams } from '../../@types/navigation';
 
 import { Background } from '../../components/Background';
 import { Heading } from '../../components/Heading';
+import { DuoCard, DuoCardProps } from '../../components/DuoCard';
 
 import logoImg from '../../assets/logo-nlw-esports.png';
+
+import { api } from '../../lib/api';
 
 import { THEME } from '../../theme';
 import { styles } from './styles';
 
 export function Game(){
+  const [duos, setDuos] = useState<DuoCardProps[]>([]);
   const navigation = useNavigation();
   const route = useRoute();
   const game = route.params as GameParams;
@@ -21,6 +26,15 @@ export function Game(){
   function handleGoBack() {
     navigation.goBack();
   }
+
+  useEffect(() => {
+    async function loadAds() {
+      const { data } = await api.get(`games/${game.id}/ads`); 
+      setDuos(data);
+    }
+
+    loadAds();
+  }, []);
 
   return (
     <Background>
@@ -50,6 +64,25 @@ export function Game(){
 
         <Heading title={game.title} subtitle="Conecte-se e comece a jogar!" />
 
+        <FlatList 
+          data={duos}
+          keyExtractor={item => item.id}
+          renderItem={({ item }) => (
+            <DuoCard  
+              data={item} 
+              onConnect={() => {}}
+            />
+          )}
+          horizontal
+          style={styles.containerList}
+          contentContainerStyle={[(duos.length > 0) ? styles.contentList : styles.emptyListContent ]}
+          showsHorizontalScrollIndicator={false}
+          ListEmptyComponent={() => (
+            <Text style={styles.emptyListText}>
+              Não há anúncios publicados para esse jogo ainda.
+            </Text>
+          )}
+        />
       </SafeAreaView>
     </Background>
   );
