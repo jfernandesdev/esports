@@ -12,6 +12,23 @@ body {
   @apply fixed bg-[#2A2634] py-8 px-10 text-white top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg w-[480px] shadow-lg shadow-black/25;
 }
 
+
+.react-multi-carousel-list {
+    position:unset !important;   
+}
+
+.react-multiple-carousel__arrow {
+  position:absolute !important;
+}
+
+.react-multiple-carousel__arrow--left {
+  left: calc(-3% + 1px) !important;
+}
+
+.react-multiple-carousel__arrow--right {
+  right: calc(-3% + 1px) !important;
+}
+
 ::-webkit-scrollbar {
   width: 6px;
 }

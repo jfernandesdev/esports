@@ -1,15 +1,18 @@
 import { useState, useEffect } from 'react'
 import * as Dialog from '@radix-ui/react-dialog'
+import Carousel from 'react-multi-carousel';
 
 import { GameBanner } from './components/GameBanner'
 import { CreateAdBanner } from './components/CreateAdBanner'
 import { CreateAdModal } from './components/CreateAdModal'
+
 
 import { api } from './lib/api'
 
 import logoImg from './assets/logo-esports.svg'
 
 import './styles/main.css'
+import 'react-multi-carousel/lib/styles.css';
 
 interface Game {
   id: string;
@@ -32,15 +35,39 @@ export function App() {
     loadGames()
   }, [])
 
-  return (
-    <div className="max-w-[1200px] mx-auto flex flex-col items-center my-20">
-      <img src={logoImg} alt="eSports NLW"/>
+  const responsive = {
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 6,
+     
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 3,
+     
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 2.5,
+     
+    }
+  };
 
-      <h1 className="text-6xl text-white font-black mt-20">
+
+  return (
+    <div className="max-w-[1200px] h-[100vh] mx-auto flex flex-col items-center justify-center my-10">
+      <img src={logoImg} alt="eSports NLW" className="w-[200px]"/>
+
+      <h1 className="text-6xl text-white font-black mt-10">
         Seu <span className="text-transparent bg-nlw-gradient bg-clip-text">duo</span> está aqui.
       </h1>
-
-      <div className="grid grid-cols-6 gap-6 mt-16">
+     
+      <div className="relative w-full mt-10">
+      <Carousel 
+        responsive={responsive}
+        containerClass=""
+        itemClass="h-[260px] px-2"
+      >
         {games.map((game) => (
           <GameBanner
             key={game.id}
@@ -49,8 +76,9 @@ export function App() {
             adsCount={game._count.ads}
           /> 
         ))}
-      </div>
-      
+      </Carousel>
+     </div>
+  
       <Dialog.Root>
         <CreateAdBanner />
         <CreateAdModal />
