@@ -31,22 +31,22 @@ export function Home() {
       const { data } = await api.get('games');
       setGames(data)
     }
-
     loadGames()
   }, [])
 
   return (
-    <div className="max-w-[1200px] h-[100vh] mx-auto flex flex-col items-center justify-center my-10">
-      <img src={logoImg} alt="eSports NLW" className="w-[200px]" />
+    <div className="max-w-[1200px] md:h-[100vh] mx-auto flex flex-col items-center justify-center my-10">
+      <img src={logoImg} alt="eSports NLW" className="w-[125px] md:w-[200px]" />
 
-      <h1 className="text-6xl text-white font-black mt-10">
+      <h1 className="text-3xl md:text-5xl text-white font-black mt-10">
         Seu <span className="text-transparent bg-nlw-gradient bg-clip-text">duo</span> está aqui.
       </h1>
 
-      <div className="relative w-full mt-10">
+      <div className="relative w-full mt-10 pl-4 ">
         <Carousel
           responsive={responsiveCarouselHome}
-          containerClass=""
+          removeArrowOnDeviceType={["tablet", "mobile"]}
+          containerClass="pr-10"
           itemClass="h-[260px] px-2"
         >
           {games.map((game) => (

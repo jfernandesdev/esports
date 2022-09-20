@@ -1,9 +1,8 @@
-import { useState } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import { GameController } from 'phosphor-react';
+
 import { DuoInfo } from './DuoInfo';
 import { DuoMatch } from './DuoMatch';
-import { api } from '../lib/api';
 
 export interface DuoCardProps {
   id: string;
@@ -27,7 +26,7 @@ export function DuoCard({ data }: Props) {
   const hours = `${data.hourStart} - ${data.hourEnd}`;
 
   return (
-    <div className="w-[250px] bg-[#2A2634] rounded-lg p-5 items-center">
+    <div className="w-[200px] md:w-[250px] bg-[#2A2634] rounded-lg p-5 items-center">
         <DuoInfo 
           label="Nome" 
           value={data.name} 

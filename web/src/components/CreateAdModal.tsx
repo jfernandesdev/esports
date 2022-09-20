@@ -1,10 +1,12 @@
 import { useState, useEffect, FormEvent } from 'react'
-import { Input } from './Input'
 import * as Dialog from '@radix-ui/react-dialog'
 import * as Checkbox from '@radix-ui/react-checkbox'
 import * as ToggleGroup from '@radix-ui/react-toggle-group'
 
 import { Check, GameController, X } from 'phosphor-react'
+
+import { Input } from './Input'
+
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
@@ -77,15 +79,14 @@ export function CreateAdModal() {
   return (
     <Dialog.Portal>
       <ToastContainer />
-
       <Dialog.Overlay className="bg-black/60 inset-0 fixed" />
 
-      <Dialog.Content className="modal">
-        <Dialog.Title className="text-3xl font-black">Publique um anúncio</Dialog.Title>
+      <Dialog.Content className="modalCreateAd">
+        <Dialog.Title className="text-2xl md:text-3xl font-black">Publique um anúncio</Dialog.Title>
 
         <Dialog.Close
           type="reset"
-          className="absolute top-6 right-6 text-zinc-500 px-5 h-12 rounded-md font-semibold hover:text-zinc-600"
+          className="absolute top-0 md:top-6 md:right-6 right-0 text-zinc-500 px-5 h-12 rounded-md font-semibold hover:text-zinc-600"
         >
           <X size={30}/>
         </Dialog.Close >
@@ -119,7 +120,7 @@ export function CreateAdModal() {
             <Input id="name" name="name" placeholder="Como te chamam dentro do game?" />
           </div>
 
-          <div className="grid grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 md:gap-6 gap-4">
             <div className="flex flex-col gap-2">
               <label htmlFor="yearsPlaying" className="font-semibold">Joga há quantos anos?</label>
               <Input type="number" id="yearsPlaying" name="yearsPlaying" min="0" max="99" placeholder="Tudo bem ser ZERO" />
@@ -131,13 +132,13 @@ export function CreateAdModal() {
             </div>
           </div>
 
-          <div className="flex gap-6">
+          <div className="flex flex-col md:flex-row gap-6">
             <div className="flex flex-col gap-2">
               <label htmlFor="weekDays" className="font-semibold">Quando costuma jogar?</label>
 
               <ToggleGroup.Root 
                 type="multiple" 
-                className="grid grid-cols-4 gap-2"
+                className="flex justify-between md:grid md:grid-cols-4 md:gap-2 "
                 value={weekDays}
                 onValueChange={setWeekDays}
                 >

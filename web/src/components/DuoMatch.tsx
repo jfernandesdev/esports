@@ -37,7 +37,7 @@ export function DuoMatch({ adsId }: DuoMatchProps) {
 
       <Dialog.Overlay className="bg-black/60 inset-0 fixed" />
 
-      <Dialog.Content className="modal flex flex-col justify-center items-center">
+      <Dialog.Content className="modalConnect flex flex-col justify-center items-center">
           <Dialog.Close
             type="reset"
             className="absolute top-6 right-6 text-zinc-500 px-5 h-12 rounded-md font-semibold hover:text-zinc-600"

@@ -2,14 +2,40 @@
 @tailwind components;
 @tailwind utilities;
 
-
 body {
   @apply bg-[#121214] text-zinc-500 bg-galaxy bg-cover bg-no-repeat;
   -webkit-font-smoothing: antialised;
 }
 
-.modal {
-  @apply fixed z-[9999] bg-[#2A2634] py-8 px-10 text-white top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg w-[480px] shadow-lg shadow-black/25;
+@media(max-width: 1000px) {
+  html {
+    font-size: 93.75%; 
+  }
+}
+
+@media(max-width: 720px) {
+  html {
+    font-size: 87.5%;
+  }
+}
+
+.modalCreateAd {
+  @apply 
+    fixed z-[9999] bg-[#2A2634] text-white shadow-lg shadow-black/25 md:rounded-lg
+    py-10 px-5 md:px-10 
+    top-0 left-0 md:top-1/2 md:left-1/2 
+    md:-translate-x-1/2 md:-translate-y-1/2  
+    w-full md:w-[480px] h-[100%] md:h-auto 
+    flex flex-col  justify-start overflow-auto;
+}
+
+.modalConnect {
+  @apply 
+    fixed z-[9999] bg-[#2A2634] text-white shadow-lg shadow-black/25 rounded-lg
+    py-10 px-10 
+    top-1/2 left-1/2 
+    -translate-x-1/2 -translate-y-1/2  
+    w-[calc(100%-48px)] md:w-[480px] ;
 }
 
 .react-multi-carousel-list {
