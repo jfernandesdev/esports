@@ -4,7 +4,7 @@ import * as Dialog from '@radix-ui/react-dialog'
 import * as Checkbox from '@radix-ui/react-checkbox'
 import * as ToggleGroup from '@radix-ui/react-toggle-group'
 
-import { Check, GameController } from 'phosphor-react'
+import { Check, GameController, X } from 'phosphor-react'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
@@ -82,6 +82,13 @@ export function CreateAdModal() {
 
       <Dialog.Content className="modal">
         <Dialog.Title className="text-3xl font-black">Publique um anúncio</Dialog.Title>
+
+        <Dialog.Close
+          type="reset"
+          className="absolute top-6 right-6 text-zinc-500 px-5 h-12 rounded-md font-semibold hover:text-zinc-600"
+        >
+          <X size={30}/>
+        </Dialog.Close >
 
         <form onSubmit={handleCreateAd} className="mt-8 flex flex-col gap-4">
           <div className="flex flex-col gap-2">
