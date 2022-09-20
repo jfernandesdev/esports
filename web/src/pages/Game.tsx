@@ -5,6 +5,7 @@ import * as Dialog from '@radix-ui/react-dialog';
 import { CreateAdModal } from '../components/CreateAdModal';
 
 import { DuoCard } from '../components/DuoCard';
+import { DuoMatch } from '../components/DuoMatch';
 
 import { api } from '../lib/api'
 import { ArrowLeft, MagnifyingGlassPlus } from 'phosphor-react';
@@ -35,7 +36,7 @@ export function Game() {
   const { id } = useParams<{id: string}>()
   const [duos, setDuos] = useState<DuoData[]>([]);
   const [game, setGame] = useState<GameInfo>({} as GameInfo);
-
+ 
   useEffect(() => {
     async function loadAds() {
       const { data } = await api.get(`games/${id}/ads`);
@@ -96,7 +97,6 @@ export function Game() {
                 <DuoCard
                   key={item.id}
                   data={item}
-                  onConnect={() => { }}
                 />
               )) }
             </Carousel>
@@ -106,7 +106,7 @@ export function Game() {
               </div>
             )}
           </div>
-      </div>
+        </div>
       </div>
     </div>
   )

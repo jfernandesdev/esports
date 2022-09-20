@@ -1,5 +1,9 @@
+import { useState } from 'react';
+import * as Dialog from '@radix-ui/react-dialog';
 import { GameController } from 'phosphor-react';
 import { DuoInfo } from './DuoInfo';
+import { DuoMatch } from './DuoMatch';
+import { api } from '../lib/api';
 
 export interface DuoCardProps {
   id: string;
@@ -13,10 +17,9 @@ export interface DuoCardProps {
 
 interface Props {
   data: DuoCardProps;
-  onConnect?: () => void;
 }
 
-export function DuoCard({ data, onConnect }: Props) {
+export function DuoCard({ data }: Props) {
   const weekDays = (data.weekDays.length > 1) ?
     `${data.weekDays.length} dias` :
     `${data.weekDays.length} dia`;
@@ -43,16 +46,17 @@ export function DuoCard({ data, onConnect }: Props) {
           colorValue={ (data.useVoiceChannel) ? '#34D399' :  '#F87171' }
         />
 
-        <button
-          className="w-full h-9 rounded-md bg-violet-500 hover:bg-violet-600 flex items-center justify-center"
-          onClick={() => {}}
-        >
-          <GameController 
-            color='#FFF'
-            size={18}
-          /> 
-          <span className="ml-2 font-bold text-white">Conectar</span>
-        </button>
+        <Dialog.Root>
+          <Dialog.Trigger className="w-full h-9 rounded-md bg-violet-500 hover:bg-violet-600 flex items-center justify-center">
+            <GameController 
+              color='#FFF'
+              size={18}
+            /> 
+            <span className="ml-2 font-bold text-white">Conectar</span>
+          </Dialog.Trigger>
+
+          <DuoMatch adsId={data.id} />
+      </Dialog.Root>
     </div>
   );
 }

@@ -62,13 +62,13 @@ export function CreateAdModal() {
      setUseVoiceChannel(false);
 
      toast.success('Anúncio criado com sucesso!', {
-       position: "top-right",
+       position: "bottom-right",
        theme: 'dark'
      });
    } catch (err) {
       console.log(err)
       toast.error('Erro ao criar o anúncio, por favor tente novamente!', {
-        position: "top-right",
+        position: "bottom-right",
         theme: 'dark'
      });
    }
