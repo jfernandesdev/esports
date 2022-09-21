@@ -53,11 +53,11 @@ export function Home() {
             responsive={responsiveCarouselHome}
             removeArrowOnDeviceType={["tablet", "mobile"]}
             containerClass="pr-10"
-            itemClass="h-[260px] px-2"
+            itemClass="h-[325px] md:h-[260px] px-2"
           >
             {loading ? (
               Array.from({ length: 6 }).map((_, index) => (
-                <Skeleton key={index} width={175} height={250} className="rounded"/>
+                <Skeleton key={index} className="h-[325px] md:h-[260px] px-2 rounded"/>
               ))
             ): ( 
               games.map((game) => (
