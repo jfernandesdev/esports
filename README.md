@@ -3,7 +3,21 @@
 Projeto Back-end, Front-end e Mobile desenvolvido durante o NLW#eSports by Rocketseat instruído por Diego Fernandes e Rodrigo Gonçalves. 🎮
 
 ### Descrição:
-- [x] ...
+O projeto trata-se de uma plataforma que permite os usuários buscarem seu duo (dupla) em jogos online e publicar um anúncio para encontrar o parceiro perfeito para jogar seu jogo favorito juntos.
+
+- [x] Projeto Back-end (API), Front-end e App Mobile;
+- [x] Listagem de jogos em alta da Twitch;
+- [x] Modal para publicação de novo anúncio;
+- [x] Conecta os jogadores por meio de anúncios nos games;
+
+O próximo nível...
+- [x] Carousel dos banner dos games e anúncios;
+- [x] Páginas dos games com os respectivos anúncios (features do app mobile na versão web);
+- [x] Responsividade mobile;
+- [x] Skeleton loading;
+- [ ] Login social com Discord (em breve...)
+- [ ] Testes unitários (em breve...)
+
 
 ## Tecnologias utilizadas: 🚀
 
@@ -34,21 +48,42 @@ Projeto Back-end, Front-end e Mobile desenvolvido durante o NLW#eSports by Rocke
 
 | Home | Modal New Ad |
 | --- | --- |
-| <img src="" /> | <img src="" /> | 
+| <img src="https://github.com/jfernandesdev/esports/blob/f71897dc0a3aec14accce6d87b3e68ed6d729dc3/web/public/layout/desktop-1.png" /> | <img src="https://github.com/jfernandesdev/esports/blob/f71897dc0a3aec14accce6d87b3e68ed6d729dc3/web/public/layout/desktop-2.png" /> | 
 
-| Game | Let's play |
+| Game (página extra desenvolvida)| Let's play (página extra desenvolvida)|
 | --- | --- |
-| <img src="" /> | <img src="" /> |
+| <img src="https://github.com/jfernandesdev/esports/blob/f71897dc0a3aec14accce6d87b3e68ed6d729dc3/web/public/layout/desktop-3.png" /> | <img src="https://github.com/jfernandesdev/esports/blob/f71897dc0a3aec14accce6d87b3e68ed6d729dc3/web/public/layout/desktop-4.png" /> |
 
-### Mobile (screenshot):
+### Mobile - Web (screenshot):
 
 | Home | Modal New Ad | Game | Let's play |
 | --- | --- | --- | --- |
-| <img src="" width='275px' /> | <img src="" width='275px' /> | <img src="" width='275px' /> | <img src="" width='275px' /> |
+| <img src="https://github.com/jfernandesdev/esports/blob/f71897dc0a3aec14accce6d87b3e68ed6d729dc3/web/public/layout/mobile-2.png" width='275px' /> | <img src="https://github.com/jfernandesdev/esports/blob/f71897dc0a3aec14accce6d87b3e68ed6d729dc3/web/public/layout/mobile-1.png" width='275px' /> | <img src="https://github.com/jfernandesdev/esports/blob/f71897dc0a3aec14accce6d87b3e68ed6d729dc3/web/public/layout/mobile-3.png" width='275px' /> | <img src="https://github.com/jfernandesdev/esports/blob/f71897dc0a3aec14accce6d87b3e68ed6d729dc3/web/public/layout/mobile-4.png" width='275px' /> |
+
+
+###  Rodando o "Server" e "Web" localmente
+
+Primeiro, instale as depedências e crie o banco de dados executando:
+```sh
+$ npm install
+$ npx prisma migrate dev
+```
+
+Depois disso, para iniciar o servidor, execute:
+```sh
+$ npm run dev
+```
+
+###  Web
+
+Para executar o cliente "Web" local:
+```sh
+$ npm install
+$ npm run dev
+```
 
 
 ### Dê uma olhada como o projeto ficou! 👀
-
 https://esports-jfernandesdev.vercel.app/
 
 <br>
