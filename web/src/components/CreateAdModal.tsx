@@ -1,9 +1,10 @@
 import { useState, useEffect, FormEvent } from 'react'
+import { Check, GameController, X } from 'phosphor-react'
 import * as Dialog from '@radix-ui/react-dialog'
 import * as Checkbox from '@radix-ui/react-checkbox'
 import * as ToggleGroup from '@radix-ui/react-toggle-group'
 
-import { Check, GameController, X } from 'phosphor-react'
+import { weeksDaysOptions } from '../utils/weeksDaysOptions'
 
 import { Input } from './Input'
 
@@ -16,16 +17,6 @@ interface Game {
   id: string;
   title: string;
 }
-
-const weeksDaysOptions = [
-  { "day": 'D', "value": "0", "name": 'Domingo' },
-  { "day": 'S', "value": "1", "name": 'Segunda-feira' },
-  { "day": 'T', "value": "2", "name": 'Terça-feira' },
-  { "day": 'Q', "value": "3", "name": 'Quarta-feira' },
-  { "day": 'Q', "value": "4", "name": 'Quinta-feira' },
-  { "day": 'S', "value": "5", "name": 'Sexta-feira' },
-  { "day": 'S', "value": "6", "name": 'Sábado' },
-]
 
 export function CreateAdModal() {
   const [games, setGames] = useState<Game[]>([])
@@ -117,18 +108,18 @@ export function CreateAdModal() {
 
           <div className="flex flex-col gap-2">
             <label htmlFor="name" className="font-semibold"> Seu nome (ou nickname)</label>
-            <Input id="name" name="name" placeholder="Como te chamam dentro do game?" />
+            <Input id="name" name="name" placeholder="Como te chamam dentro do game?" required/>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 md:gap-6 gap-4">
             <div className="flex flex-col gap-2">
               <label htmlFor="yearsPlaying" className="font-semibold">Joga há quantos anos?</label>
-              <Input type="number" id="yearsPlaying" name="yearsPlaying" min="0" max="99" placeholder="Tudo bem ser ZERO" />
+              <Input type="number" id="yearsPlaying" name="yearsPlaying" min="0" max="99" placeholder="Tudo bem ser ZERO" required/>
             </div>
 
             <div className="flex flex-col gap-2">
               <label htmlFor="discord" className="font-semibold">Qual seu Discord?</label>
-              <Input id="discord" name="discord" placeholder="Usuario#0000" />
+              <Input id="discord" name="discord" placeholder="Usuario#0000" required />
             </div>
           </div>
 
@@ -158,8 +149,8 @@ export function CreateAdModal() {
             <div className="flex flex-col gap-2 flex-1">
               <label htmlFor="hourStart" className="font-semibold">Qual horário do dia?</label>
               <div className="grid grid-cols-2 gap-2">
-                <Input type="time" id="hourStart" name="hourStart" placeholder="De" />
-                <Input type="time" id="hourEnd" name="hourEnd" placeholder="Até" />
+                <Input type="time" id="hourStart" name="hourStart" placeholder="De" required />
+                <Input type="time" id="hourEnd" name="hourEnd" placeholder="Até" required />
               </div>
             </div>
           </div>

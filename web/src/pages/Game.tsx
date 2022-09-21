@@ -4,6 +4,9 @@ import { ArrowLeft, MagnifyingGlassPlus } from 'phosphor-react';
 import Carousel from 'react-multi-carousel';
 import * as Dialog from '@radix-ui/react-dialog';
 
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
+
 import { CreateAdModal } from '../components/CreateAdModal';
 import { DuoCard } from '../components/DuoCard';
 
@@ -35,11 +38,15 @@ export function Game() {
   const { id } = useParams<{id: string}>()
   const [duos, setDuos] = useState<DuoData[]>([]);
   const [game, setGame] = useState<GameInfo>({} as GameInfo);
+
+  const [loadingGame, setLoadingGame] = useState(true);
+  const [loadingAds, setLoadingAds] = useState(true);
  
   useEffect(() => {
     async function loadAds() {
       const { data } = await api.get(`games/${id}/ads`);
       setDuos(data);
+      setLoadingAds(false);
     }
     loadAds();
   }, []);
@@ -48,6 +55,7 @@ export function Game() {
     async function getGame() {
       const { data } = await api.get(`game/${id}`);
       setGame(data);
+      setLoadingGame(false);
     }
     getGame();
   }, []);
@@ -79,35 +87,54 @@ export function Game() {
       </div>
 
       <div className="flex flex-col md:flex-row md:gap-16 gap-4 w-full mt-10">
-        <img src={game.bannerUrl} alt={game.title} className={`w-[calc(100%-48px)] h-[175px] md:w-[350px] md:h-[475px] object-cover bg-zinc-600 border-0 rounded-lg m-auto`}/>
-      
-        <div className="my-auto">
-          <div className="mb-8 md:mb-16 pl-6 md:pl-0 mt-3 md:mt-0">
-            <h1 className="text-white font-black text-2xl md:text-4xl">{game.title}</h1>
-            <span className="text-zinc-400 text-xl">Conecte-se e comece a jogar!</span>
-          </div>
-
-          <div className="mt-4 md:mt-10 w-full md:w-[800px] relative pl-5 md:pl-0">
-            {(duos.length > 0) ? (
-            <Carousel
-              responsive={responsiveCarouselGame}
-              removeArrowOnDeviceType={["tablet", "mobile"]}
-              itemClass="px-2 md:px-0"
-            >
-              {duos.map((item) => (
-                <DuoCard
-                  key={item.id}
-                  data={item}
-                />
-              )) }
-            </Carousel>
+        <SkeletonTheme baseColor="#2A2634" highlightColor="#302C38">
+            {loadingGame ? (
+                <Skeleton className={`w-[100%] h-[175px] md:w-[350px] md:h-[475px] rounded-lg mx-auto`} /> 
             ) : (
-              <div className="w-full flex py-16">
-                <span> Não há anúncios publicados para esse jogo ainda!</span>
-              </div>
+                <img src={game.bannerUrl} alt={game.title} className={`w-[calc(100%-48px)] h-[175px] md:w-[350px] md:h-[475px] object-cover bg-zinc-600 border-0 rounded-lg m-auto`} />
             )}
-          </div>
-        </div>
+           
+            <div className="my-auto">
+                <div className="mb-8 md:mb-16 pl-6 md:pl-0 mt-3 md:mt-0">
+                    {loadingGame ? (
+                        <Skeleton className="text-white font-black text-2xl md:text-4xl mb-2 w-[40%]" />
+                    ) : (
+                        <h1 className="text-white font-black text-2xl md:text-4xl mb-2">{game.title}</h1>
+                    )}
+                    <span className="text-zinc-400 text-xl">Conecte-se e comece a jogar!</span>
+                </div>
+
+                <div className="mt-4 md:mt-10 w-full md:w-[800px] relative pl-5 md:pl-0">
+                    {(!loadingAds && duos.length <= 0) && (
+                        <div className="w-full flex py-16">
+                            <span> Não há anúncios publicados para esse jogo ainda!</span>
+                        </div>
+                    )}
+                
+                        <Carousel
+                            responsive={responsiveCarouselGame}
+                            removeArrowOnDeviceType={["tablet", "mobile"]}
+                            itemClass="px-2 md:px-0"
+                        >
+                        {loadingAds ? (
+                        Array.from({ length: 4 }).map((_, index) => (
+                            <Skeleton 
+                                key={index}
+                                className="w-[200px] md:w-[250px] h-[290px] md:h-[330px] rounded" 
+                            />
+                        ))
+                        ) : ( 
+                        duos.map((item) => (
+                            <DuoCard
+                                key={item.id}
+                                data={item}
+                            />
+                        ))    
+                        )} 
+                    </Carousel>
+                </div>
+            </div>
+        </SkeletonTheme>
       </div>
     </div>
   )

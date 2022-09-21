@@ -6,6 +6,9 @@ import { GameBanner } from '../components/GameBanner'
 import { CreateAdBanner } from '../components/CreateAdBanner'
 import { CreateAdModal } from '../components/CreateAdModal'
 
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
+
 import { api } from '../lib/api'
 
 import logoImg from '../assets/logo-esports.svg'
@@ -25,11 +28,13 @@ interface Game {
 
 export function Home() {
   const [games, setGames] = useState<Game[]>([])
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function loadGames() {
       const { data } = await api.get('games');
-      setGames(data)
+      setGames(data);
+      setLoading(false);
     }
     loadGames()
   }, [])
@@ -43,22 +48,30 @@ export function Home() {
       </h1>
 
       <div className="relative w-full mt-10 pl-4 ">
-        <Carousel
-          responsive={responsiveCarouselHome}
-          removeArrowOnDeviceType={["tablet", "mobile"]}
-          containerClass="pr-10"
-          itemClass="h-[260px] px-2"
-        >
-          {games.map((game) => (
-            <GameBanner
-              key={game.id}
-              id={game.id}
-              title={game.title}
-              bannerUrl={game.bannerUrl}
-              adsCount={game._count.ads}
-            />
-          ))}
-        </Carousel>
+        <SkeletonTheme baseColor="#2A2634" highlightColor="#302C38">
+          <Carousel
+            responsive={responsiveCarouselHome}
+            removeArrowOnDeviceType={["tablet", "mobile"]}
+            containerClass="pr-10"
+            itemClass="h-[260px] px-2"
+          >
+            {loading ? (
+              Array.from({ length: 6 }).map((_, index) => (
+                <Skeleton key={index} width={175} height={250} className="rounded"/>
+              ))
+            ): ( 
+              games.map((game) => (
+                <GameBanner
+                  key={game.id}
+                  id={game.id}
+                  title={game.title}
+                  bannerUrl={game.bannerUrl}
+                  adsCount={game._count.ads}
+                />
+              ))
+            )}
+          </Carousel>
+        </SkeletonTheme>
       </div>
 
       <Dialog.Root>
