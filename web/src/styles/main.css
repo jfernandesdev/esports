@@ -21,7 +21,7 @@ body {
 
 .modalCreateAd {
   @apply 
-    fixed bg-[#2A2634] text-white shadow-lg shadow-black/25 rounded-lg
+     fixed z-[9998] bg-[#2A2634] text-white shadow-lg shadow-black/25 rounded-lg
     py-10 px-5 md:px-10 
     top-1/2 left-1/2 
     -translate-x-1/2 -translate-y-1/2  

@@ -95,7 +95,7 @@ export function CreateAdModal() {
                 </Select.Icon>
               </Select.Trigger>
 
-              <Select.Portal className="text-sm rounded text-white bg-zinc-900 shadow-2xl shadow-zinc-900">
+              <Select.Portal className="text-sm rounded text-white bg-zinc-900 shadow-2xl shadow-zinc-900 z-[9999]">
                 <Select.Content >
                   <Select.ScrollUpButton>
                     <CaretUp size={20} weight='bold' />
