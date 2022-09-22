@@ -1,8 +1,10 @@
 import { useState, useEffect, FormEvent } from 'react'
-import { Check, GameController, X } from 'phosphor-react'
 import * as Dialog from '@radix-ui/react-dialog'
 import * as Checkbox from '@radix-ui/react-checkbox'
 import * as ToggleGroup from '@radix-ui/react-toggle-group'
+import * as Select from '@radix-ui/react-select'
+
+import { Check, GameController, X, CaretDown, CaretUp } from 'phosphor-react'
 
 import { weeksDaysOptions } from '../utils/weeksDaysOptions'
 
@@ -85,25 +87,38 @@ export function CreateAdModal() {
         <form onSubmit={handleCreateAd} className="mt-8 flex flex-col gap-4">
           <div className="flex flex-col gap-2">
             <label htmlFor="game" className="font-semibold">Qual o game?</label>
-            <select 
-              id="game"
-              name="game"
-              className="bg-zinc-900 py-3 px-4 rounded text-sm first:text-zinc-500"
-              required
-              defaultValue=""
-            >
-              <option 
-                value="" 
-                className="text-zinc-500 py-3"
-                disabled
-              >Selecione o game que deseja jogar</option>
+            <Select.Root name="game">
+              <Select.Trigger className="bg-zinc-900 px-4 py-3 text-sm flex items-center justify-between h-[44px] rounded relative">
+                <Select.Value placeholder="Selecione o game que deseja jogar" />
+                <Select.Icon>
+                  <CaretDown />
+                </Select.Icon>
+              </Select.Trigger>
 
-              {games.map((game) => (
-                <option key={game.id} value={game.id} className="text-white my-3">
-                  {game.title}
-                </option>
-              ))}
-            </select>
+              <Select.Portal className="text-sm rounded text-white bg-zinc-900 shadow-2xl shadow-zinc-900">
+                <Select.Content >
+                  <Select.ScrollUpButton>
+                    <CaretUp size={20} weight='bold' />
+                  </Select.ScrollUpButton>
+
+                  <Select.Viewport>
+                    {games.map(game => (
+                      <Select.Item
+                        key={game.id}
+                        value={game.id}
+                        className="px-4 py-3 focus:outline-0 focus:bg-violet-700 hover:bg-violet-700 cursor-default">
+                        <Select.ItemText>{game.title}</Select.ItemText>
+
+                      </Select.Item>
+                    ))}
+                  </Select.Viewport>
+
+                  <Select.ScrollUpButton>
+                    <CaretDown size={20} weight='bold' />
+                  </Select.ScrollUpButton>
+                </Select.Content>
+              </Select.Portal>
+            </Select.Root>
           </div>
 
           <div className="flex flex-col gap-2">
